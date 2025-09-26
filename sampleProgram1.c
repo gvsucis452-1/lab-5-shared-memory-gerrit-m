@@ -1,4 +1,5 @@
 /**********************************************************
+ *5.  Submit your screenshots5.  Submit your screenshots
  *
  * sampleProgram1.c
  * CIS 451 Lab 5
@@ -29,8 +30,20 @@ int main ()
       exit (1); 
    }
 
-   printf("Value a: %p\t Value b: %p\n", (void *) sharedMemoryPtr, (void *) sharedMemoryPtr + SHM_SIZE);
+   printf("Value a: %p\t Value b: %p\n", (void *) sharedMemoryPtr, (void *) sharedMemoryPtr + SHM_SIZE); 
 
+   struct shmid_ds shm_info;
+
+   if (shmctl(shmId, IPC_STAT, &shm_info) == -1) {
+      perror("shmctl failed");
+      exit(1); 
+   }
+
+   size_t size = shm_info.shm_segsz;
+
+   printf("Size of Shared Memory Segment is %ld bytes.\n", size);
+   printf("Shared Memory Segment ID: %d\n", shmId);
+   pause();
    if(shmdt (sharedMemoryPtr) < 0) { 
       perror ("Unable to detach\n"); 
       exit (1); 
