@@ -1,0 +1,7 @@
+in regards to the reader and writer:
+
+If you only have one instance of the reader open, the reader will recieve the message twice.
+If you do not have the reader open, the writer endlessly waits for responses, and will not prompt again.
+In the above case, you will still be able to type.
+If both readers are running, behavior works as expected.
+All instances must be closed separately, closing the writer will not close the readers automatically(?) have not tested to be fair.
