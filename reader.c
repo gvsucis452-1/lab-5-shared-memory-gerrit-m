@@ -1,4 +1,5 @@
-# Reader.c Gerrit Mitchell
+// zk What C compiler do you have that accepts #-style comments?
+// # Reader.c Gerrit Mitchell
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,6 +41,7 @@ int main() {
     while (1) {
         // Wait for writer to provide data
         while (shmptr->ready == 0) {
+            // zk Try removing the calls to sleep and see if everything still works as expected. 
             sleep(1);
         }
 
