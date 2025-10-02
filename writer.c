@@ -1,4 +1,5 @@
-# Writer.c Gerrit Mitchell
+// zk What C compiler do you have that accepts #-style comments?
+// # Writer.c Gerrit Mitchell
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,6 +48,8 @@ int main() {
     while (1) {
         // Wait until readers finish
         while (shmptr->ready == 1) {
+            // zk I don't think I'd sleep that long.
+            // For this lap, even a busy wait is fine.
             sleep(1);
         }
 
